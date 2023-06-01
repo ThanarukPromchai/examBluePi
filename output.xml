@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.2 (Python 3.11.3 on darwin)" generated="20230531 14:02:56.237" rpa="false" schemaversion="3">
+<suite id="s1" name="Run" source="/Users/w.nitinunchaiyakul/Development/Self/ExamToDoList/run.robot">
+<test id="s1-t1" name="Open Webpage" line="7">
+<kw name="Open Browser To Do List" library="common">
+<kw name="Open Browser" library="Selenium2Library">
+<arg>${urlToDoList}</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230531 14:02:56.886" level="INFO">Opening browser 'Chrome' to base url 'https://abhigyank.github.io/To-Do-List/'.</msg>
+<status status="PASS" starttime="20230531 14:02:56.886" endtime="20230531 14:03:04.926"/>
+</kw>
+<status status="PASS" starttime="20230531 14:02:56.885" endtime="20230531 14:03:04.926"/>
+</kw>
+<status status="PASS" starttime="20230531 14:02:56.885" endtime="20230531 14:03:04.926"/>
+</test>
+<test id="s1-t2" name="Add Task To Do Case" line="10">
+<kw name="Add Task Item ToDoList" library="common">
+<arg>Test1</arg>
+<kw name="Switch Tab" library="common">
+<arg>${TAB_ADD_ITEM}</arg>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${tab}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230531 14:03:04.928" level="INFO">Clicking element 'xPath=//a[text()="Add Item"]'.</msg>
+<status status="PASS" starttime="20230531 14:03:04.927" endtime="20230531 14:03:05.214"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230531 14:03:05.714" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20230531 14:03:05.214" endtime="20230531 14:03:05.714"/>
+</kw>
+<status status="PASS" starttime="20230531 14:03:04.927" endtime="20230531 14:03:05.715"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>${PATH_INPUT_TODOLIST_NAME}</arg>
+<arg>${toDoName}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230531 14:03:05.717" level="INFO">Typing text 'Test1' into text field 'xPath=//input[@id="new-task"]'.</msg>
+<status status="PASS" starttime="20230531 14:03:05.715" endtime="20230531 14:03:06.100"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${PATH_BUTTOM_ADD_TODOLIST}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230531 14:03:06.101" level="INFO">Clicking element 'xPath=//button[@data-upgraded=",MaterialButton"]'.</msg>
+<status status="PASS" starttime="20230531 14:03:06.100" endtime="20230531 14:03:06.186"/>
+</kw>
+<status status="PASS" starttime="20230531 14:03:04.927" endtime="20230531 14:03:06.186"/>
+</kw>
+<kw name="Verify Task Item ToDoList" library="common">
+<arg>Test1</arg>
+<kw name="Switch Tab" library="common">
+<arg>${TAB_TO_DO_TASK}</arg>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${tab}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230531 14:03:06.187" level="INFO">Clicking element 'xPath=//a[text()="To-Do Tasks"]'.</msg>
+<status status="PASS" starttime="20230531 14:03:06.187" endtime="20230531 14:03:06.373"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230531 14:03:06.874" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20230531 14:03:06.373" endtime="20230531 14:03:06.874"/>
+</kw>
+<status status="PASS" starttime="20230531 14:03:06.187" endtime="20230531 14:03:06.875"/>
+</kw>
+<kw name="Get Task Item Index By Name" library="common">
+<var>${Index}</var>
+<arg>${toDoName}</arg>
+<kw name="Get Element Attribute" library="Selenium2Library">
+<var>${index}</var>
+<arg>${PATH_TASK_LIST}/li/label/span[text()="${toDoName}"]//parent::label</arg>
+<arg>for</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20230531 14:03:07.022" level="INFO">${index} = 1</msg>
+<status status="PASS" starttime="20230531 14:03:06.876" endtime="20230531 14:03:07.022"/>
+</kw>
+<msg timestamp="20230531 14:03:07.022" level="INFO">${Index} = 1</msg>
+<status status="PASS" starttime="20230531 14:03:06.875" endtime="20230531 14:03:07.022"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>${PATH_TASK_LIST}/li/label[@for="${Index}"]</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230531 14:03:07.022" endtime="20230531 14:03:07.048"/>
+</kw>
+<status status="PASS" starttime="20230531 14:03:06.186" endtime="20230531 14:03:07.048"/>
+</kw>
+<status status="PASS" starttime="20230531 14:03:04.927" endtime="20230531 14:03:07.048"/>
+</test>
+<test id="s1-t3" name="Delete Task To Do Case" line="14">
+<kw name="Add Task Item ToDoList" library="common">
+<arg>Test2</arg>
+<kw name="Switch Tab" library="common">
+<arg>${TAB_ADD_ITEM}</arg>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${tab}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230531 14:03:07.049" level="INFO">Clicking element 'xPath=//a[text()="Add Item"]'.</msg>
+<status status="PASS" starttime="20230531 14:03:07.049" endtime="20230531 14:03:07.156"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230531 14:03:07.657" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20230531 14:03:07.156" endtime="20230531 14:03:07.658"/>
+</kw>
+<status status="PASS" starttime="20230531 14:03:07.049" endtime="20230531 14:03:07.658"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>${PATH_INPUT_TODOLIST_NAME}</arg>
+<arg>${toDoName}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230531 14:03:07.658" level="INFO">Typing text 'Test2' into text field 'xPath=//input[@id="new-task"]'.</msg>
+<status status="PASS" starttime="20230531 14:03:07.658" endtime="20230531 14:03:07.767"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${PATH_BUTTOM_ADD_TODOLIST}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230531 14:03:07.768" level="INFO">Clicking element 'xPath=//button[@data-upgraded=",MaterialButton"]'.</msg>
+<status status="PASS" starttime="20230531 14:03:07.768" endtime="20230531 14:03:07.940"/>
+</kw>
+<status status="PASS" starttime="20230531 14:03:07.048" endtime="20230531 14:03:07.940"/>
+</kw>
+<kw name="Verify Task Item ToDoList" library="common">
+<arg>Test2</arg>
+<kw name="Switch Tab" library="common">
+<arg>${TAB_TO_DO_TASK}</arg>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${tab}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230531 14:03:07.941" level="INFO">Clicking element 'xPath=//a[text()="To-Do Tasks"]'.</msg>
+<status status="PASS" starttime="20230531 14:03:07.941" endtime="20230531 14:03:08.030"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230531 14:03:08.530" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20230531 14:03:08.030" endtime="20230531 14:03:08.530"/>
+</kw>
+<status status="PASS" starttime="20230531 14:03:07.941" endtime="20230531 14:03:08.531"/>
+</kw>
+<kw name="Get Task Item Index By Name" library="common">
+<var>${Index}</var>
+<arg>${toDoName}</arg>
+<kw name="Get Element Attribute" library="Selenium2Library">
+<var>${index}</var>
+<arg>${PATH_TASK_LIST}/li/label/span[text()="${toDoName}"]//parent::label</arg>
+<arg>for</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20230531 14:03:08.577" level="INFO">${index} = 2</msg>
+<status status="PASS" starttime="20230531 14:03:08.531" endtime="20230531 14:03:08.577"/>
+</kw>
+<msg timestamp="20230531 14:03:08.577" level="INFO">${Index} = 2</msg>
+<status status="PASS" starttime="20230531 14:03:08.531" endtime="20230531 14:03:08.577"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>${PATH_TASK_LIST}/li/label[@for="${Index}"]</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230531 14:03:08.577" endtime="20230531 14:03:08.596"/>
+</kw>
+<status status="PASS" starttime="20230531 14:03:07.941" endtime="20230531 14:03:08.597"/>
+</kw>
+<kw name="Delete Task Item ToDoList" library="common">
+<arg>Test2</arg>
+<kw name="Switch Tab" library="common">
+<arg>${TAB_TO_DO_TASK}</arg>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${tab}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230531 14:03:08.597" level="INFO">Clicking element 'xPath=//a[text()="To-Do Tasks"]'.</msg>
+<status status="PASS" starttime="20230531 14:03:08.597" endtime="20230531 14:03:08.619"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230531 14:03:09.120" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20230531 14:03:08.619" endtime="20230531 14:03:09.120"/>
+</kw>
+<status status="PASS" starttime="20230531 14:03:08.597" endtime="20230531 14:03:09.120"/>
+</kw>
+<kw name="Get Task Item Index By Name" library="common">
+<var>${Index}</var>
+<arg>${toDoName}</arg>
+<kw name="Get Element Attribute" library="Selenium2Library">
+<var>${index}</var>
+<arg>${PATH_TASK_LIST}/li/label/span[text()="${toDoName}"]//parent::label</arg>
+<arg>for</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20230531 14:03:09.171" level="INFO">${index} = 2</msg>
+<status status="PASS" starttime="20230531 14:03:09.121" endtime="20230531 14:03:09.171"/>
+</kw>
+<msg timestamp="20230531 14:03:09.172" level="INFO">${Index} = 2</msg>
+<status status="PASS" starttime="20230531 14:03:09.121" endtime="20230531 14:03:09.172"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${PATH_TASK_LIST}/li/button[@id="${Index}"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230531 14:03:09.172" level="INFO">Clicking element 'xPath=//ul[@id="incomplete-tasks"]/li/button[@id="2"]'.</msg>
+<status status="PASS" starttime="20230531 14:03:09.172" endtime="20230531 14:03:09.211"/>
+</kw>
+<status status="PASS" starttime="20230531 14:03:08.597" endtime="20230531 14:03:09.211"/>
+</kw>
+<status status="PASS" starttime="20230531 14:03:07.048" endtime="20230531 14:03:09.211"/>
+</test>
+<test id="s1-t4" name="Check Task To Do Case" line="19">
+<kw name="Add Task Item ToDoList" library="common">
+<arg>Test3</arg>
+<kw name="Switch Tab" library="common">
+<arg>${TAB_ADD_ITEM}</arg>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${tab}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230531 14:03:09.212" level="INFO">Clicking element 'xPath=//a[text()="Add Item"]'.</msg>
+<status status="PASS" starttime="20230531 14:03:09.212" endtime="20230531 14:03:09.233"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230531 14:03:09.734" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20230531 14:03:09.233" endtime="20230531 14:03:09.734"/>
+</kw>
+<status status="PASS" starttime="20230531 14:03:09.212" endtime="20230531 14:03:09.735"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>${PATH_INPUT_TODOLIST_NAME}</arg>
+<arg>${toDoName}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230531 14:03:09.736" level="INFO">Typing text 'Test3' into text field 'xPath=//input[@id="new-task"]'.</msg>
+<status status="PASS" starttime="20230531 14:03:09.735" endtime="20230531 14:03:09.772"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${PATH_BUTTOM_ADD_TODOLIST}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230531 14:03:09.772" level="INFO">Clicking element 'xPath=//button[@data-upgraded=",MaterialButton"]'.</msg>
+<status status="PASS" starttime="20230531 14:03:09.772" endtime="20230531 14:03:09.812"/>
+</kw>
+<status status="PASS" starttime="20230531 14:03:09.212" endtime="20230531 14:03:09.812"/>
+</kw>
+<kw name="Verify Task Item ToDoList" library="common">
+<arg>Test3</arg>
+<kw name="Switch Tab" library="common">
+<arg>${TAB_TO_DO_TASK}</arg>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${tab}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230531 14:03:09.813" level="INFO">Clicking element 'xPath=//a[text()="To-Do Tasks"]'.</msg>
+<status status="PASS" starttime="20230531 14:03:09.813" endtime="20230531 14:03:09.851"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230531 14:03:10.352" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20230531 14:03:09.851" endtime="20230531 14:03:10.353"/>
+</kw>
+<status status="PASS" starttime="20230531 14:03:09.812" endtime="20230531 14:03:10.353"/>
+</kw>
+<kw name="Get Task Item Index By Name" library="common">
+<var>${Index}</var>
+<arg>${toDoName}</arg>
+<kw name="Get Element Attribute" library="Selenium2Library">
+<var>${index}</var>
+<arg>${PATH_TASK_LIST}/li/label/span[text()="${toDoName}"]//parent::label</arg>
+<arg>for</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20230531 14:03:10.402" level="INFO">${index} = 2</msg>
+<status status="PASS" starttime="20230531 14:03:10.354" endtime="20230531 14:03:10.402"/>
+</kw>
+<msg timestamp="20230531 14:03:10.402" level="INFO">${Index} = 2</msg>
+<status status="PASS" starttime="20230531 14:03:10.353" endtime="20230531 14:03:10.402"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>${PATH_TASK_LIST}/li/label[@for="${Index}"]</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230531 14:03:10.403" endtime="20230531 14:03:10.455"/>
+</kw>
+<status status="PASS" starttime="20230531 14:03:09.812" endtime="20230531 14:03:10.455"/>
+</kw>
+<kw name="Check Task Item ToDoList" library="common">
+<arg>Test3</arg>
+<kw name="Switch Tab" library="common">
+<arg>${TAB_TO_DO_TASK}</arg>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${tab}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230531 14:03:10.456" level="INFO">Clicking element 'xPath=//a[text()="To-Do Tasks"]'.</msg>
+<status status="PASS" starttime="20230531 14:03:10.456" endtime="20230531 14:03:10.475"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230531 14:03:10.977" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20230531 14:03:10.475" endtime="20230531 14:03:10.977"/>
+</kw>
+<status status="PASS" starttime="20230531 14:03:10.455" endtime="20230531 14:03:10.977"/>
+</kw>
+<kw name="Get Task Item Index By Name" library="common">
+<var>${Index}</var>
+<arg>${toDoName}</arg>
+<kw name="Get Element Attribute" library="Selenium2Library">
+<var>${index}</var>
+<arg>${PATH_TASK_LIST}/li/label/span[text()="${toDoName}"]//parent::label</arg>
+<arg>for</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20230531 14:03:11.015" level="INFO">${index} = 2</msg>
+<status status="PASS" starttime="20230531 14:03:10.977" endtime="20230531 14:03:11.015"/>
+</kw>
+<msg timestamp="20230531 14:03:11.015" level="INFO">${Index} = 2</msg>
+<status status="PASS" starttime="20230531 14:03:10.977" endtime="20230531 14:03:11.015"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${PATH_TASK_LIST}/li/label[@for="${Index}"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230531 14:03:11.015" level="INFO">Clicking element 'xPath=//ul[@id="incomplete-tasks"]/li/label[@for="2"]'.</msg>
+<status status="PASS" starttime="20230531 14:03:11.015" endtime="20230531 14:03:11.070"/>
+</kw>
+<status status="PASS" starttime="20230531 14:03:10.455" endtime="20230531 14:03:11.070"/>
+</kw>
+<kw name="Verify Task Completed ToDoList" library="common">
+<arg>Test3</arg>
+<kw name="Switch Tab" library="common">
+<arg>${TAB_COMPLETED}</arg>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${tab}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230531 14:03:11.071" level="INFO">Clicking element 'xPath=//a[text()="Completed"]'.</msg>
+<status status="PASS" starttime="20230531 14:03:11.071" endtime="20230531 14:03:11.135"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230531 14:03:11.636" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20230531 14:03:11.135" endtime="20230531 14:03:11.637"/>
+</kw>
+<status status="PASS" starttime="20230531 14:03:11.071" endtime="20230531 14:03:11.637"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>${PATH_COMPLETE_LIST}/li/span[text()="${toDoName}"]</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230531 14:03:11.637" endtime="20230531 14:03:11.696"/>
+</kw>
+<status status="PASS" starttime="20230531 14:03:11.070" endtime="20230531 14:03:11.696"/>
+</kw>
+<status status="PASS" starttime="20230531 14:03:09.212" endtime="20230531 14:03:11.696"/>
+</test>
+<test id="s1-t5" name="Delete Task Completed To Do Case" line="25">
+<kw name="Add Task Item ToDoList" library="common">
+<arg>Test4</arg>
+<kw name="Switch Tab" library="common">
+<arg>${TAB_ADD_ITEM}</arg>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${tab}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230531 14:03:11.697" level="INFO">Clicking element 'xPath=//a[text()="Add Item"]'.</msg>
+<status status="PASS" starttime="20230531 14:03:11.697" endtime="20230531 14:03:11.729"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230531 14:03:12.231" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20230531 14:03:11.729" endtime="20230531 14:03:12.231"/>
+</kw>
+<status status="PASS" starttime="20230531 14:03:11.697" endtime="20230531 14:03:12.231"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>${PATH_INPUT_TODOLIST_NAME}</arg>
+<arg>${toDoName}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230531 14:03:12.232" level="INFO">Typing text 'Test4' into text field 'xPath=//input[@id="new-task"]'.</msg>
+<status status="PASS" starttime="20230531 14:03:12.231" endtime="20230531 14:03:12.305"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${PATH_BUTTOM_ADD_TODOLIST}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230531 14:03:12.305" level="INFO">Clicking element 'xPath=//button[@data-upgraded=",MaterialButton"]'.</msg>
+<status status="PASS" starttime="20230531 14:03:12.305" endtime="20230531 14:03:12.321"/>
+</kw>
+<status status="PASS" starttime="20230531 14:03:11.697" endtime="20230531 14:03:12.321"/>
+</kw>
+<kw name="Verify Task Item ToDoList" library="common">
+<arg>Test4</arg>
+<kw name="Switch Tab" library="common">
+<arg>${TAB_TO_DO_TASK}</arg>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${tab}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230531 14:03:12.321" level="INFO">Clicking element 'xPath=//a[text()="To-Do Tasks"]'.</msg>
+<status status="PASS" starttime="20230531 14:03:12.321" endtime="20230531 14:03:12.345"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230531 14:03:12.848" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20230531 14:03:12.345" endtime="20230531 14:03:12.848"/>
+</kw>
+<status status="PASS" starttime="20230531 14:03:12.321" endtime="20230531 14:03:12.849"/>
+</kw>
+<kw name="Get Task Item Index By Name" library="common">
+<var>${Index}</var>
+<arg>${toDoName}</arg>
+<kw name="Get Element Attribute" library="Selenium2Library">
+<var>${index}</var>
+<arg>${PATH_TASK_LIST}/li/label/span[text()="${toDoName}"]//parent::label</arg>
+<arg>for</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20230531 14:03:12.898" level="INFO">${index} = 2</msg>
+<status status="PASS" starttime="20230531 14:03:12.850" endtime="20230531 14:03:12.898"/>
+</kw>
+<msg timestamp="20230531 14:03:12.898" level="INFO">${Index} = 2</msg>
+<status status="PASS" starttime="20230531 14:03:12.849" endtime="20230531 14:03:12.898"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>${PATH_TASK_LIST}/li/label[@for="${Index}"]</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230531 14:03:12.898" endtime="20230531 14:03:12.917"/>
+</kw>
+<status status="PASS" starttime="20230531 14:03:12.321" endtime="20230531 14:03:12.917"/>
+</kw>
+<kw name="Check Task Item ToDoList" library="common">
+<arg>Test4</arg>
+<kw name="Switch Tab" library="common">
+<arg>${TAB_TO_DO_TASK}</arg>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${tab}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230531 14:03:12.917" level="INFO">Clicking element 'xPath=//a[text()="To-Do Tasks"]'.</msg>
+<status status="PASS" starttime="20230531 14:03:12.917" endtime="20230531 14:03:12.936"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230531 14:03:13.438" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20230531 14:03:12.936" endtime="20230531 14:03:13.439"/>
+</kw>
+<status status="PASS" starttime="20230531 14:03:12.917" endtime="20230531 14:03:13.439"/>
+</kw>
+<kw name="Get Task Item Index By Name" library="common">
+<var>${Index}</var>
+<arg>${toDoName}</arg>
+<kw name="Get Element Attribute" library="Selenium2Library">
+<var>${index}</var>
+<arg>${PATH_TASK_LIST}/li/label/span[text()="${toDoName}"]//parent::label</arg>
+<arg>for</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20230531 14:03:13.491" level="INFO">${index} = 2</msg>
+<status status="PASS" starttime="20230531 14:03:13.440" endtime="20230531 14:03:13.491"/>
+</kw>
+<msg timestamp="20230531 14:03:13.491" level="INFO">${Index} = 2</msg>
+<status status="PASS" starttime="20230531 14:03:13.439" endtime="20230531 14:03:13.491"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${PATH_TASK_LIST}/li/label[@for="${Index}"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230531 14:03:13.491" level="INFO">Clicking element 'xPath=//ul[@id="incomplete-tasks"]/li/label[@for="2"]'.</msg>
+<status status="PASS" starttime="20230531 14:03:13.491" endtime="20230531 14:03:13.534"/>
+</kw>
+<status status="PASS" starttime="20230531 14:03:12.917" endtime="20230531 14:03:13.534"/>
+</kw>
+<kw name="Verify Task Completed ToDoList" library="common">
+<arg>Test4</arg>
+<kw name="Switch Tab" library="common">
+<arg>${TAB_COMPLETED}</arg>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${tab}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230531 14:03:13.534" level="INFO">Clicking element 'xPath=//a[text()="Completed"]'.</msg>
+<status status="PASS" starttime="20230531 14:03:13.534" endtime="20230531 14:03:13.613"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230531 14:03:14.114" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20230531 14:03:13.613" endtime="20230531 14:03:14.114"/>
+</kw>
+<status status="PASS" starttime="20230531 14:03:13.534" endtime="20230531 14:03:14.115"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>${PATH_COMPLETE_LIST}/li/span[text()="${toDoName}"]</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230531 14:03:14.115" endtime="20230531 14:03:14.155"/>
+</kw>
+<status status="PASS" starttime="20230531 14:03:13.534" endtime="20230531 14:03:14.155"/>
+</kw>
+<kw name="Delete Task Complete ToDoList" library="common">
+<arg>Test4</arg>
+<kw name="Switch Tab" library="common">
+<arg>${TAB_COMPLETED}</arg>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${tab}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230531 14:03:14.156" level="INFO">Clicking element 'xPath=//a[text()="Completed"]'.</msg>
+<status status="PASS" starttime="20230531 14:03:14.156" endtime="20230531 14:03:14.334"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230531 14:03:14.837" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20230531 14:03:14.334" endtime="20230531 14:03:14.837"/>
+</kw>
+<status status="PASS" starttime="20230531 14:03:14.156" endtime="20230531 14:03:14.837"/>
+</kw>
+<kw name="Get Task Item Completed By Name" library="common">
+<var>${Index}</var>
+<arg>${toDoName}</arg>
+<kw name="Get Element Attribute" library="Selenium2Library">
+<var>${index}</var>
+<arg>${PATH_COMPLETE_LIST}/li/span[text()="${toDoName}"]//following-sibling::button</arg>
+<arg>id</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20230531 14:03:14.921" level="INFO">${index} = 2</msg>
+<status status="PASS" starttime="20230531 14:03:14.838" endtime="20230531 14:03:14.921"/>
+</kw>
+<msg timestamp="20230531 14:03:14.921" level="INFO">${Index} = 2</msg>
+<status status="PASS" starttime="20230531 14:03:14.837" endtime="20230531 14:03:14.921"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${PATH_COMPLETE_LIST}/li/span[text()="${toDoName}"]//following-sibling::button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230531 14:03:14.921" level="INFO">Clicking element 'xPath=//ul[@id="completed-tasks"]/li/span[text()="Test4"]//following-sibling::button'.</msg>
+<status status="PASS" starttime="20230531 14:03:14.921" endtime="20230531 14:03:14.986"/>
+</kw>
+<status status="PASS" starttime="20230531 14:03:14.155" endtime="20230531 14:03:14.987"/>
+</kw>
+<status status="PASS" starttime="20230531 14:03:11.697" endtime="20230531 14:03:14.987"/>
+</test>
+<status status="PASS" starttime="20230531 14:02:56.239" endtime="20230531 14:03:14.987"/>
+</suite>
+<statistics>
+<total>
+<stat pass="5" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="5" fail="0" skip="0" id="s1" name="Run">Run</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
